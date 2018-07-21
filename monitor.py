@@ -25,6 +25,7 @@ if __name__ == '__main__':
     elif platform == 'win32':
         args = 'tasklist'
     flag = True
+    notify = notificate.Notify()
     while True:
         p = subprocess.Popen(
             args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -33,7 +34,7 @@ if __name__ == '__main__':
             # notifacate
             subject = 'Warning: Program exit'
             message = '%s has exited' % target
-            notificate.notificate(subject, message)
+            notify.notificate(subject, message)
             flag = False
         if target in out:
             flag = True
